@@ -1,15 +1,31 @@
+import "./Expenseitem.css";
 
-function Expenseitem(){
-    return (
+
+const expensedate= new Date(2022,2,28);
+const expenseitem = 'Food'
+const LocationOfExpenditure= 'Delhi'
+const  expenseprice = 200
+function Expenseitem() {
+  return (
+    <div>
+      <div className="expense-item ">
         <div>
-    <h2>Expenseitem </h2>
-    <h6>Food Rs 10</h6>
-    <h6>Petrol Rs 100</h6>
-    <h6> Movies Rs 200</h6>
+          
+          <h1>ExpenseItem</h1>
+        </div>
+        <div className="expense-item__description ">
+          <h2>{expenseitem} </h2>
+        </div>
+        <div className = "expense-item "><h5>{expensedate.toISOString()}</h5> </div>
+        <div className="expense-item__description " >
+            <h5>{LocationOfExpenditure}</h5>
+        </div>
+        <div classNmae="expense-item__price"> <h3>Rs{expenseprice}</h3></div>
+      </div>
+ 
+ 
+     
     </div>
-    )
-            
-    
-    
+  );
 }
-export default Expenseitem;  
+export default Expenseitem;
