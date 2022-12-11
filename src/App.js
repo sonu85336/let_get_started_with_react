@@ -1,3 +1,4 @@
+ 
 import Expenseitem from "./component/Expense";
 const expenses = [
   {
@@ -31,27 +32,22 @@ const expenses = [
 ];
 
 function App() {
- 
-    return (
-      <div>
-        {expenses.map((name)=>(
-<div>
-   <Expenseitem
+  return (
+    <div>
+      {expenses.map((name) => (
+        <div>
+          <Expenseitem
             title={name.title}
             amount={name.amount}
             LocationOfExpenditure={name.LocationOfExpenditure}
             date={name.date}
           ></Expenseitem>
-</div>
-
-        
-        
-        ))}
-         
+   
+        </div>
+      ))}
       
-      </div>
-    );
-  }
- 
+    </div>
+  );
+}
 
 export default App;
