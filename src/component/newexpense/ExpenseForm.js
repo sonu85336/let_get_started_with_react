@@ -1,13 +1,15 @@
 import React, {useState} from "react";
 import "./Expenseform.css";
-import react from "react";
+ 
  
 function ExpenseForm() {
+ 
 const [titleset,settitle]  =  useState('')
 const [amountset,setamount]= useState('')
-const [dateset,setdate]=useState()
+const [dateset,setdate]=useState('')
 
-const titlechange = (event)=>{
+
+const titlechange = (event)=>{ 
 
   settitle(event.target.value)
   console.log(event.target.value);
@@ -20,10 +22,21 @@ const datechange =(event)=>{
    setdate(event.target.value)
   console.log(event.target.value)
 }
+const expneseadd=(event)=>{
+   event.preventDefault()
+
+
+   const expenseobj={
+   title: titleset,
+    amount:amountset,
+    date:new Date(dateset)
+   }
+   console.log(expenseobj)
+}
  
 
   return (
-   <form>
+   <form onSubmit={expneseadd}>
     <div className="new-expense__controls">
     <div className="new-expense__control">
         <label>Title</label>
@@ -40,9 +53,9 @@ const datechange =(event)=>{
 
     </div>
     <div className="new-expense__actions">
-      <button type="submit">Add Expense</button>
+      <button type="submit" >Add Expense</button>
     </div>
    </form>
   );
 }
-export default ExpenseForm;
+export default ExpenseForm
