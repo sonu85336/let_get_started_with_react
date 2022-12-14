@@ -1,46 +1,37 @@
-import React, { useState } from "react";
-import ExpenseDate from "./ExpenseDate";
-import ExpesnseDetails from "./ExpenseDetails";
-import ExpenseAmount from "./ExpenseAmount";
- 
+  import React, {useState} from "react";
+  import "./expenses.css";
+import ExpensesFilter from "./Expensefilter";
+import Expenseitem from "./ExpenseItem";
 import Card from "../UI/Card";
-import "./Expenseitem.css";
+function Expense(props){
 
-function Expenseitem(props) {
-  
-   const deletebutton= (event)=>{
-   
-  console.log(event.target.value)
-           
-    console.log(props)
-   }
-  const [title, setTitle] = useState(props.title);
-  const [amount, changeamount] = useState(props.amount);
-  const amountchange = () => {
-    changeamount("$100");
-    console.log(amount);
-  };
-  const clickHandler = () => {
-    setTitle("updated");
+    const [filteredYear, setFilteredYear] = useState("2020");
+    const filterChangeHandler = (selectedYear) => {
+      setFilteredYear(selectedYear);
+    };
+    return (
+      <div>
+        
+        <Card className="expenses">
+          
+          <ExpensesFilter
+            selected={filteredYear}
+            onChangeFilter={filterChangeHandler}
+          ></ExpensesFilter>
+          {props.items.map((expense) => (
+          
+              <Expenseitem
+              key = {expense.id}
+                title={expense.title}
+                amount={expense.amount}
+                // LocationOfExpenditure={expense.LocationOfExpenditure}
+                date={expense.date}
+              ></Expenseitem>
+          
+          ))}
+        </Card>
+      </div>
+    );
+  }
 
-    console.log(title);
-  };
-  return (
-   
-    <Card className="expense-item "  >
-        <ExpesnseDetails
-          LocationOfExpenditure={props.LocationOfExpenditure}
-        ></ExpesnseDetails>
-        <ExpenseDate date={props.date}></ExpenseDate>
-        <ExpesnseDetails title={title}></ExpesnseDetails>
-        <ExpenseAmount   amount={amount}></ExpenseAmount>
-        <button onClick={clickHandler}>update</button>
-        <button    onClick={ amountchange}>ExpenseAmount</button>
-         <button  onClick={deletebutton}>Delete</button>
-     
-    </Card>
- 
-   
-  );
-}
-export default Expenseitem;
+export default Expense;
