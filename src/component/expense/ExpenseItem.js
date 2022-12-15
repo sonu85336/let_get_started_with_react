@@ -11,7 +11,7 @@ function Expenseitem(props) {
   
  
    const deletebutton= (event)=>{
-   
+   event.target.parentNode.remove()
   console.log(event.target.value)
            
     console.log(props)
@@ -28,7 +28,7 @@ function Expenseitem(props) {
     console.log(title);
   };
   return (
-   <li>
+   
     <Card className="expense-item "  >
     
         <ExpesnseDetails
@@ -42,7 +42,7 @@ function Expenseitem(props) {
          <button  onClick={deletebutton}>Delete</button>
      
     </Card>
-    </li>
+ 
    
   );
 }
