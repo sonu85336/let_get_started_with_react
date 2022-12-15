@@ -5,7 +5,7 @@ import ExpenseAmount from "./ExpenseAmount";
  
 import Card from "../UI/Card";
 import "./Expenseitem.css";
-import ExpensesFilter from "./Expensefilter";
+ 
 
 function Expenseitem(props) {
   
@@ -28,7 +28,7 @@ function Expenseitem(props) {
     console.log(title);
   };
   return (
-   
+   <li>
     <Card className="expense-item "  >
     
         <ExpesnseDetails
@@ -42,7 +42,7 @@ function Expenseitem(props) {
          <button  onClick={deletebutton}>Delete</button>
      
     </Card>
- 
+    </li>
    
   );
 }
